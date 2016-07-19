@@ -1,3 +1,4 @@
+require('spec_helper')
 describe(Product) do
   it("ensures the name is present") do
     product = Product.new({:name => ''})
@@ -15,11 +16,6 @@ describe(Product) do
     product = Product.create({:name => 'lamp', :price => 0})
     expect(product.save()).to(eq(false))
   end
-  it("sets the purchased value to false when initializing a product") do
-    product = Product.create({:name => 'lamp', :price => 50})
-    expect(product.purchased()).to(eq(false))
-  end
-
   describe(".not_purchased") do
     it("returns the products not purchased") do
       not_purchased_product1 = Product.create({:name => "lamp", :price => 50, :purchased => false })

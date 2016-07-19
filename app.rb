@@ -3,7 +3,7 @@ require("sinatra/reloader")
 also_reload("lib/**/*.rb")
 require('sinatra/activerecord')
 require("./lib/product")
-# require("./lib/purchase")
+require("./lib/purchase")
 require("pg")
 
 get('/') do
@@ -17,12 +17,13 @@ end
 post('/products') do
   name = params.fetch('name')
   price = params.fetch('price').to_f()
-  @product = Product.create({:name => name, :price => price})
+  purchased = false
+  @product = Product.create({:name => name, :price => price, :purchased => purchased})
   erb(:product_success)
 end
 
 get('/products') do
-  @products = Product.all()
+  @products = Product.not_purchased()
   erb(:products)
 end
 
@@ -56,4 +57,25 @@ delete('/products/:id') do
   product.destroy()
   @products = Product.all()
   erb(:products)
+end
+
+get('/purchases/new') do
+  @products = Product.not_purchased()
+  erb(:purchase_form)
+end
+
+post('/purchases') do
+  product_ids = params.fetch("product_ids")
+  @products = []
+  product_ids.each() do |product_id|
+    product = Product.find(product_id)
+    @products.push(product)
+  end
+  total_price = 0
+  @products.each() do |product|
+    total_price = total_price.+(product.price())
+  end
+  date_of_purchase = DateTime.now().to_date()
+  @purchase = Purchase.create({:date_of_purchase => date_of_purchase, :total_price => total_price})
+  erb(:purchase_receipt)
 end

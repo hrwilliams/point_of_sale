@@ -1,0 +1,21 @@
+<h1>Checkout</h1>
+
+<h3>Select all products to purchase:</h3>
+
+<% if @products.any?() %>
+  <form action="/purchases" method="post">
+    <% @products.each() do |product| %>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="product_ids[]" value="<%= product.id()%>"><%= product.name() %>
+      </label>
+    </div>
+    <% end %>
+
+    <button type="submit">Make purchase</button>
+  </form>
+  <% else %>
+  <p>There are no products to purchase!</p>
+  <% end %>
+
+  <a href="/">Return to Main Page</a>
