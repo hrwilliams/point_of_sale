@@ -11,7 +11,8 @@ describe(Product) do
     product = Product.new({:name => 'lamp', :price => 'lamp'})
     expect(product.save()).to(eq(false))
   end
-  # it("sets the purchased value to false when initializing a product") do
-  #
-  # end
+  it("sets the purchased value to false when initializing a product") do
+    product = Product.create({:name => 'lamp', :price => 50})
+    expect(product.purchased()).to(eq(false))
+  end
 end
