@@ -19,4 +19,15 @@ describe(Product) do
     product = Product.create({:name => 'lamp', :price => 50})
     expect(product.purchased()).to(eq(false))
   end
+
+  describe(".not_purchased") do
+    it("returns the products not purchased") do
+      not_purchased_product1 = Product.create({:name => "lamp", :price => 50, :purchased => false })
+      not_purchased_product2 = Product.create({:name => "desk", :price => 50, :purchased => false })
+      not_purchased_products = [not_purchased_product1, not_purchased_product2]
+      purchased_product = Product.create({:name => "belt", :price => 8, :purchased => false})
+      purchased_product.update({:name => "belt", :price => 8, :purchased => true})
+      expect(Product.not_purchased()).to(eq(not_purchased_products))
+    end
+  end
 end
