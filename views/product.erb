@@ -5,4 +5,10 @@
   <p>This product is available for purchase</p>
 <% end %>
   <a href="/products/<%= @product.id()%>/edit">Update <%= @product.name()%> Information</a>
+  <br>
+  <form action="/products/<%= @product.id() %>" method="post">
+    <input type="hidden" name="_method" value="delete">
+    <button type="submit">Delete <%= @product.name() %></button>
+  </form>
+  <br>
 <a href="/">Home</a>

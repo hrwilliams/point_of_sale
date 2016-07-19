@@ -50,3 +50,10 @@ patch('/products/:id') do
   @product.update({:name => name, :price => price, :purchased => purchased})
   erb(:product)
 end
+
+delete('/products/:id') do
+  product = Product.find(params.fetch('id').to_i())
+  product.destroy()
+  @products = Product.all()
+  erb(:products)
+end

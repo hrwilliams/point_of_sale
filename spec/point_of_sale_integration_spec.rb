@@ -38,4 +38,12 @@ describe('update a product path', {:type => :feature}) do
     click_button 'Update'
     expect(page).to have_content 'mid-century modern lamp'
   end
+
+  it("allows the user to delete a product") do
+    Product.create({:name => 'lamp', :price => 12})
+    visit '/products'
+    click_link 'lamp'
+    click_button 'Delete lamp'
+    expect(page).to have_no_content 'lamp'
+  end
 end
