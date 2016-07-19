@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   validates(:name, {:presence => true, :length => { :maximum => 50}})
   validates(:price, {:presence => true, numericality: true})
-  around_create(:purchase_false)
+  after_create(:purchase_false)
 
 private
 
