@@ -3,9 +3,9 @@
 <% if @products.any?() %>
 <ul>
   <% @products.each() do |product| %>
-  <li><%= product.name() %>, <%= product.price() %></a></li>
+  <li><%= product.name() %>: <%='%.2f' % product.price()%></a></li>
   <% end %>
-  <li>Total: <%= @purchase.total_price() %></li>
+  <li>Total: <%= '%.2f' % @purchase.total_price() %></li>
 </ul>
 
 <% else %>
