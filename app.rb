@@ -16,7 +16,7 @@ end
 
 post('/products') do
   name = params.fetch('name')
-  price = params.fetch('price')
+  price = params.fetch('price').to_f()
   @product = Product.create({:name => name, :price => price})
   erb(:product_success)
 end
