@@ -30,3 +30,23 @@ get('/products/:id') do
   @product = Product.find(params.fetch('id').to_i())
   erb(:product)
 end
+
+get('/products/:id/edit') do
+  @product = Product.find(params.fetch('id').to_i())
+  erb(:product_edit)
+end
+
+patch('/products/:id') do
+  @product = Product.find(params.fetch('id').to_i())
+  name = params.fetch('name')
+  if name.==('')
+    name = @product.name()
+  end
+  price = params.fetch('price').to_i()
+  if price.!=(0)
+    price = @product.price()
+  end
+  purchased = @product.purchased()
+  @product.update({:name => name, :price => price, :purchased => purchased})
+  erb(:product)
+end

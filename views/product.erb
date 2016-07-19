@@ -4,4 +4,5 @@
 <% else %>
   <p>This product is available for purchase</p>
 <% end %>
+  <a href="/products/<%= @product.id()%>/edit">Update <%= @product.name()%> Information</a>
 <a href="/">Home</a>

@@ -1,0 +1,11 @@
+<h1>Update <%=@product.name()%></h1>
+
+<form action="/products/<%= @product.id() %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <label for="name">Rename your product:</label>
+  <input type="text" name="name" id="name">
+  <label for="price">Set a new price:</label>
+  <input type="text" name="price" id="price">
+
+  <button type ="submit">Update</button>
+</form>
