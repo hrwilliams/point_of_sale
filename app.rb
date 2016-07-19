@@ -25,3 +25,8 @@ get('/products') do
   @products = Product.all()
   erb(:products)
 end
+
+get('/products/:id') do
+  @product = Product.find(params.fetch('id').to_i())
+  erb(:product)
+end

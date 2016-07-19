@@ -1,0 +1,7 @@
+<h1><%= @product.name() %> <%= @product.price()%></h1>
+<% if @product.purchased() %>
+  <p>This product has been purchased </p>
+<% else %>
+  <p>This product is available for purchase</p>
+<% end %>
+<a href="/">Home</a>
