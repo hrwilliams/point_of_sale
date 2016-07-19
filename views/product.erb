@@ -1,4 +1,4 @@
-<h1><%= @product.name() %> <%= @product.price()%></h1>
+<h1><%= @product.name() %> <%='%.2f' % @product.price()%></h1>
 <% if @product.purchased() %>
   <p>This product has been purchased </p>
 <% else %>
