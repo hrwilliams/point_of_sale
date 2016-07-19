@@ -18,7 +18,6 @@ describe(Product) do
   end
   it("capitalizes every letter of product") do
     product = Product.create({:name => 'lamp', :price => 12})
-binding.pry
     expect(product.name()).to(eq("LAMP"))
   end
   describe(".not_purchased") do

@@ -8,7 +8,7 @@ class Product < ActiveRecord::Base
     where({:purchased => false})
   end)
 
-# private
+private
 
   define_method(:upcase_name) do
     self.name=(name().upcase())
