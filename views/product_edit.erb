@@ -3,9 +3,9 @@
 <form action="/products/<%= @product.id() %>" method="post">
   <input type="hidden" name="_method" value="patch">
   <label for="name">Rename your product:</label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" value="<%= @product.name() %>">
   <label for="price">Set a new price:</label>
-  <input type="text" name="price" id="price">
+  <input type="text" name="price" id="price" value="<%='%.2f' % @product.price()%>">
 
   <button type ="submit">Update</button>
 </form>

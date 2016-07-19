@@ -54,8 +54,18 @@ describe('add a purchase path', {:type => :feature}) do
     Product.create({:name => 'belt', :price => 50, :purchased => false})
     visit '/'
     click_link 'Make a Purchase'
-    check('belt: 12.00')
+    check('belt: 50.00')
     click_button 'Make purchase'
     expect(page).to have_content 'Thank you for your purchase!'
+  end
+  it("removes purchased products from the product list") do
+    Product.create({:name => 'lamp', :price => 12, :purchased => false})
+    Product.create({:name => 'belt', :price => 50, :purchased => false})
+    visit '/'
+    click_link 'Make a Purchase'
+    check('belt: 50.00')
+    click_button 'Make purchase'
+    visit('/products')
+    expect(page).to have_no_content 'belt'
   end
 end

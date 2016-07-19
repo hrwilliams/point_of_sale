@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Auntie Anne's Awesome Antiques App</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Checkout</h1>
+
+<h3>Select all products to purchase:</h3>
+
+  <form action="/purchases" method="post">
+    
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="product_ids[]" value="234">lamp: 12.00
+      </label>
+    </div>
+    
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" name="product_ids[]" value="235">belt: 50.00
+      </label>
+    </div>
+    
+
+    <button type="submit">Make purchase</button>
+  </form>
+  
+
+  <a href="/">Return to Main Page</a>
+
+  </div>
+</body>
+</html>

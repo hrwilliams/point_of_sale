@@ -40,13 +40,7 @@ end
 patch('/products/:id') do
   @product = Product.find(params.fetch('id').to_i())
   name = params.fetch('name')
-  if name.==('')
-    name = @product.name()
-  end
   price = params.fetch('price').to_i()
-  if price.!=(0)
-    price = @product.price()
-  end
   purchased = @product.purchased()
   @product.update({:name => name, :price => price, :purchased => purchased})
   erb(:product)
@@ -74,6 +68,7 @@ post('/purchases') do
   total_price = 0
   @products.each() do |product|
     total_price = total_price.+(product.price())
+    product.update({:purchased => true})
   end
   date_of_purchase = DateTime.now().to_date()
   @purchase = Purchase.create({:date_of_purchase => date_of_purchase, :total_price => total_price})
