@@ -20,3 +20,8 @@ post('/products') do
   @product = Product.create({:name => name, :price => price})
   erb(:product_success)
 end
+
+get('/products') do
+  @products = Product.all()
+  erb(:products)
+end

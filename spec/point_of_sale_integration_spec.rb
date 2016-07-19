@@ -12,4 +12,10 @@ describe('add a product path', {:type => :feature}) do
     click_button('Add Product')
     expect(page).to have_content 'Success'
   end
+
+  it('allows the user to view a list of divisions') do
+    Product.create({:name => 'Lamp', :price => 12})
+    visit '/products'
+    expect(page).to have_content 'Lamp'
+  end
 end

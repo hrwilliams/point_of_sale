@@ -1,0 +1,15 @@
+<h1>Products:</h1>
+
+<% if @products.any?() %>
+<ul>
+  <% @products.each() do |product| %>
+  <li><a href = "/products/<%= product.id() %>"><%= product.name() %>, <%= product.price() %></a></li>
+  <% end %>
+</ul>
+<% else %>
+<p>
+  There are no products in your inventory.
+</p>
+<% end %>
+
+<a href='/'>Home</a>
